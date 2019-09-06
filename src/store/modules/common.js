@@ -9,7 +9,7 @@ export default {
 
     },
     actions: {
-        getUsers({ commit, state },playload) {
+        getUsers({ commit, state },payload) {
             request({
                 url: 'http://localhost:3000/users/list',
                 method: 'get',
@@ -27,11 +27,11 @@ export default {
         },
     },
     mutations: {
-        changeStart(state, playload) {
+        changeStart(state, payload) {
             state.start += 3
         },
-        getUsers(state, playload) {
-            state.users = state.users.concat(playload.res)
+        getUsers(state, payload) {
+            state.users = state.users.concat(payload.res)
         },
     }
 }
