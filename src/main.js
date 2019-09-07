@@ -6,7 +6,7 @@ import router from './router'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import store from './store'
-import request from './utils/request'
+import request from './utils/request.js'
 Vue.use(ElementUI)
 Vue.config.productionTip = false
 // 全局挂载
