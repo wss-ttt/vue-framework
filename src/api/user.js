@@ -7,3 +7,11 @@ export const getUsersList = (query) => {
         data: query
     })
 }
+
+export const getUsersList2 = (query) => {
+    return request({
+        url: '/api/users/list',
+        method: 'get',
+        data: query
+    })
+}
