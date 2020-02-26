@@ -4,6 +4,12 @@ pre, form, fieldset, input, textarea, p, blockquote, th, td {
 	margin: 0;
 	box-sizing: border-box;
 }
+html,body{
+	height: 100%;
+}
+:focus { 
+    outline: 0; 
+} 
 fieldset, img { 
     border: 0;
 }
