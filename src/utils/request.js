@@ -25,4 +25,20 @@ service.interceptors.response.use(response => {
     return Promise.reject();
 })
 
+// get请求处理
+service.adornParams = function(params = {},openDefultParams = true){
+    let defaults = {
+        't': new Date().getTime()   // 添加时间戳
+    }
+    return openDefultParams?{...params,...defaults}:params;
+}
+
+// post请求处理
+service.adornData = function(data = {},openDefultdata = true){
+    let defaults = {
+        't': new Date().getTime()   // 添加时间戳
+    }
+    return openDefultdata?{...data,...defaults}:data;
+}
+
 export default service;   // 返回的就是axios对象
