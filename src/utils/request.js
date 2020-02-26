@@ -3,7 +3,7 @@ import axios from 'axios';
 // 创建axios对象
 const service = axios.create({
     // process.env.NODE_ENV === 'development' 来判断是否开发环境
-    baseURL: 'http://119.29.68.183:8088/',
+    // baseURL:'http://localhost:3000',   // 这个地方添加 服务器地址
     timeout: 5000
 })
 
