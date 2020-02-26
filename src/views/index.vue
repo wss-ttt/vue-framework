@@ -58,7 +58,9 @@ export default {
     getData() {
       // 测试发送请求
       this.$http({
-        url:'http://localhost:3000/users/list',// 如果没有配置baseURL,这个地方就写完整的接口地址
+        // 如果没有配置baseURL,这个地方就写完整的接口地址
+        // 如果存在target属性,baseURL就不需要设置了
+        url:'http://localhost:3000/users/list',
         method: 'get',
       }).then((data)=>{
         console.log(data);
