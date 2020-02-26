@@ -8,7 +8,8 @@ import 'element-ui/lib/theme-chalk/index.css'
 import store from './store'
 import request from './utils/request.js'
 // 全局引入公共的样式
-import './assets/css/global.css'
+// import './assets/css/global.css'
+import './assets/scss/global.scss'
 Vue.use(ElementUI)
 Vue.config.productionTip = false
 // 全局挂载
