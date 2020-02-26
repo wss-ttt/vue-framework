@@ -8,6 +8,8 @@ const service = axios.create({
 })
 // 请求拦截
 service.interceptors.request.use( config => {
+    // config.headers['token'] = Vue.cookie.get('token') // 请求头带上token
+    config.headers['token'] = 'wss'; // 测试
     return config;
 }, error => {
     console.log(error);
@@ -15,8 +17,8 @@ service.interceptors.request.use( config => {
 })
 // 响应拦截
 service.interceptors.response.use(response => {
-    if(response.status === 200){
-        return response.data;
+    if(response.status === 200){   // 这里需要根据后端的接口定义做响应的修改
+        return response.data;   // 直接返回data数据即可
     }else{
         Promise.reject();
     }
