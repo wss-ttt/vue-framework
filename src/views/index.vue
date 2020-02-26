@@ -5,17 +5,26 @@
       <h1>测试发送请求</h1>
       tips:该请求时后端配置了 允许跨域请求
       <br>
-      <button type="button" @click="getData">发送请求获取数据</button>
+      <button type="button" @click="getData">发送请求获取数据(get)</button>
       <hr>
-      tip:该请求 在前端进行跨域请求配置
+      tips:该请求 在前端进行跨域请求配置
       <br>
-      <button type="button" @click="getData2">发送请求获取数据</button>
+      <button type="button" @click="getData2">发送请求获取数据(get)</button>
+      <hr>
+      tips:测试post请求
+      <br>
+      <button type="button" @click="getData3">发送请求获取数据(post)</button>
+      <hr>
+      tips:使用封装后的请求方法
+      <br>
+      <button type="button" @click="getData4">发送请求</button>
     </div>
   </div>
 </template>
 
 <script>
 import echarts from 'echarts'
+import {getUsersList2} from '@/api/user.js'
 export default {
   components: {},
   props: {},
@@ -59,7 +68,27 @@ export default {
       this.$http({
         url:'/api/users/list',
         method: 'get',
+        params:this.$http.adornParams({
+          name:'乔峰',
+          age:18,
+        })
       }).then((data)=>{
+        console.log(data);
+      })
+    },
+    getData3(){
+      this.$http({
+        url:'/api/users/delete',
+        method:'post',
+        data:this.$http.adornData({
+          id:1
+        })
+      }).then((data)=>{
+        console.log(data)
+      });
+    },
+    getData4(){
+      getUsersList2().then(data=>{
         console.log(data);
       })
     }
