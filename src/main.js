@@ -7,6 +7,7 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import store from './store'
 import request from './utils/request.js'
+import VueCookie from 'vue-cookie'
 // 全局引入公共的样式
 // import './assets/css/global.css'
 import './assets/scss/base.scss'
@@ -14,6 +15,8 @@ Vue.use(ElementUI)
 Vue.config.productionTip = false
 // 全局挂载
 Vue.prototype.$http = request
+
+Vue.use(VueCookie)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
