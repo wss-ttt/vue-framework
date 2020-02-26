@@ -10,7 +10,17 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    // 在这个地方进行配置跨域请求
+    proxyTable: {
+      '/api':{
+        target: 'http://localhost:3001', // 接口的域名
+        changeOrigin: true, // 如果接口跨域，需要进行这个参数配置
+        // 路径重写
+        pathRewrite:{
+          '^/api': ''
+        }
+      }
+    },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
