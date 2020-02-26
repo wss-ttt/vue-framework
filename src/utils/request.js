@@ -6,14 +6,14 @@ const service = axios.create({
     // baseURL:'http://localhost:3000',   // 这个地方添加 服务器地址
     timeout: 5000
 })
-
+// 请求拦截
 service.interceptors.request.use( config => {
     return config;
 }, error => {
     console.log(error);
     return Promise.reject();
 })
-
+// 响应拦截
 service.interceptors.response.use(response => {
     if(response.status === 200){
         return response.data;
