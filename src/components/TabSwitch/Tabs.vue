@@ -72,15 +72,17 @@ export default {
     }
   },
   watch: {
-    //监听当前tab,显示相应内容
-    activeKey() {
-      self.$children.map(item => {
-        if (item.tabKey == self.activeKey) {
-          item.show = true
-        } else {
-          item.show = false
-        }
-      })
+    //监听数据变化
+    activeKey: {
+      handler(newVal, oldVal) {
+        self.$children.map(item => {
+          if (item.tabKey == newVal) {
+            item.show = true
+          } else {
+            item.show = false
+          }
+        })
+      }
     }
   }
 }
