@@ -81,19 +81,23 @@ export default {
   }
 }
 </script>
-<style scope>
-.active-tab {
-  color: #158ef3;
-  height: 50px;
-  font-weight: bold;
-  line-height: 50px;
-  font-size: 16px;
-}
+<style scope lang="scss">
 .tab {
   color: #333;
   height: 50px;
   line-height: 50px;
   font-size: 16px;
+  cursor: pointer;
+  &.active-tab {
+    color: #158ef3;
+    height: 50px;
+    font-weight: bold;
+    line-height: 50px;
+    font-size: 16px;
+  }
+  &.is-active{
+    color: #158ef3;
+  }
 }
 .tabs {
   /*使用弹性布局*/
@@ -110,7 +114,7 @@ export default {
   left: 0;
   height: 2px;
   background-color: #158ef3;
-  top:100%;
-  /* transition: transform .3s ease; */
+  top: 100%;
+  transition: transform .3s ease;
 }
 </style>
