@@ -39,7 +39,11 @@ export default {
     // 保存子组件实例
     self.childList = this.$children // 动态获取子组件实例
     //设置滑动距离。平分设备宽度
-    self.slideWidth = window.innerWidth / this.childList.length
+    var tabs = document.querySelector('.tabs')
+    // 获取总共的宽度
+    var width = tabs.offsetWidth
+    // 求出每一个tab的宽度
+    self.slideWidth = width / this.childList.length
     //设置状态线初始化滑动位置
     self.$refs.line.style.width = this.slideWidth + 'px'
   },
@@ -49,6 +53,7 @@ export default {
       self.activeKey = item.tabKey
       self.$refs.line.style.transform =
         'translateX(' + self.slideWidth * index + 'px)'
+      // 传递两个参数出去
       self.$emit('on-click', item, index) //将切换tab的事件暴露给父组件
     },
     //初始化时tab状态设置与相应内容显示
@@ -81,40 +86,37 @@ export default {
 }
 </script>
 <style scope lang="scss">
-.tab-title {
-  /*使用弹性布局*/
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  height: 50px;
-  border-bottom: 1px solid #f6f6f6;
-  position: relative;
-
-  .tab {
-    color: #333;
+.tabs {
+  width: 100%;
+  .tab-title {
+    /*使用弹性布局*/
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
     height: 50px;
-    line-height: 50px;
-    font-size: 16px;
-    cursor: pointer;
-    &.active-tab {
-      color: #158ef3;
+    border-bottom: 1px solid #f6f6f6;
+    position: relative;
+    .tab {
+      color: #333;
       height: 50px;
-      font-weight: bold;
       line-height: 50px;
       font-size: 16px;
-    }
-    &.is-active {
-      color: #158ef3;
+      cursor: pointer;
+      flex: 1;
+      text-align: center;
+      &.is-active {
+        color: #158ef3;
+      }
     }
   }
-}
-.tab-line {
-  /*使用绝对定位  -> 因为需要移动*/
-  position: absolute;
-  left: 0;
-  height: 2px;
-  background-color: #158ef3;
-  top: 100%;
-  transition: transform 0.3s ease;
+  .tab-line {
+    /*使用绝对定位  -> 因为需要移动*/
+    position: absolute;
+    left: 0;
+    height: 2px;
+    background-color: #158ef3;
+    top: 100%;
+    transition: transform 0.3s ease;
+  }
 }
 </style>
