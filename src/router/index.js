@@ -15,6 +15,11 @@ export default new Router({
       path:'/index',
       name:'index',
       component:resovle=>require(['@/views/index.vue'],resovle)
+    },
+    {
+      path:'/tabSwitchPage',  // 测试tab切换组件的测试页面
+      name:'tabSwitchPage',
+      component:resovle=>require(['@/views/tabSwitchPage.vue'],resovle)
     }
   ]
 })
