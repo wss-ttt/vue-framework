@@ -3,8 +3,8 @@
     <div class="tabs">
       <div ref="line" class="tab-line"></div>
       <div
-        :class="[activeKey == item.actKey? 'active-tab' : 'tab']"
-        @click="changeTab($event,item,index)"
+        :class="activeKey == item.tabKey? 'is-active' : ''"
+        class="tab" @click="changeTab($event,item,index)"
         v-for="(item,index) in childList"
         :key="index"
       >{{item.label}}</div>
@@ -15,7 +15,6 @@
 <script>
 let self
 export default {
-  name: 'ElTab',
   data() {
     return {
       childList: [],
@@ -23,18 +22,18 @@ export default {
       slideWidth: 0
     }
   },
-  //获取子组件传过来的激活tab
+  //默认显示哪个tab
   props: {
     defaultKey: {
       type: String,
-      default: '1' // 设置默认值
+      default: '0' // 设置默认值
     }
   },
   created() {
     self = this
   },
   mounted() {
-    //循环tab标签
+    // 保存子组件实例
     self.childList = this.$children // 动态获取子组件实例
     //设置滑动距离。平分设备宽度
     self.slideWidth = window.innerWidth / this.childList.length
@@ -44,8 +43,7 @@ export default {
   methods: {
     //切换tab触发事件
     changeTab: (event, item, index) => {
-      // debugger
-      self.activeKey = item.actKey
+      self.activeKey = item.tabKey
       self.$refs.line.style.transform =
         'translateX(' + self.slideWidth * index + 'px)'
       self.$emit('on-click', item, index) //将切换tab的事件暴露给父组件
@@ -53,7 +51,7 @@ export default {
     //初始化时tab状态设置与相应内容显示
     updateNav: () => {
       self.$children.forEach((item, index) => {
-        if (item.actKey == self.activeKey) {
+        if (item.tabKey == self.activeKey) {
           item.show = true
           self.$nextTick(function() {
             self.$refs.line.style.transform =
@@ -69,7 +67,7 @@ export default {
     //监听当前tab,显示相应内容
     activeKey() {
       self.$children.map(item => {
-        if (item.actKey == self.activeKey) {
+        if (item.tabKey == self.activeKey) {
           item.show = true
         } else {
           item.show = false

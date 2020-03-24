@@ -5,16 +5,15 @@
 </template>
 <script>
 export default {
-  name: 'ElTabPanes',
   data() {
     return {
       show: false //初始时将所有内容隐藏
     }
   },
   props: {
-    actKey: {
+    tabKey: {
       type: String,
-      default: '1'
+      default: '0'   // 默认为0
     },
     label: {
       type: String,
