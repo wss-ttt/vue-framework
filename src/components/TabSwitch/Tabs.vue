@@ -1,15 +1,18 @@
 <template>
-  <div>
-    <div class="tabs">
+  <div class="tabs">
+    <div class="tab-title">
       <div ref="line" class="tab-line"></div>
       <div
         :class="activeKey == item.tabKey? 'is-active' : ''"
-        class="tab" @click="changeTab($event,item,index)"
+        class="tab"
+        @click="changeTab($event,item,index)"
         v-for="(item,index) in childList"
         :key="index"
       >{{item.label}}</div>
     </div>
-    <slot></slot>
+    <div class="tab-content">
+      <slot></slot>
+    </div>
   </div>
 </template>
 <script>
@@ -78,24 +81,7 @@ export default {
 }
 </script>
 <style scope lang="scss">
-.tab {
-  color: #333;
-  height: 50px;
-  line-height: 50px;
-  font-size: 16px;
-  cursor: pointer;
-  &.active-tab {
-    color: #158ef3;
-    height: 50px;
-    font-weight: bold;
-    line-height: 50px;
-    font-size: 16px;
-  }
-  &.is-active{
-    color: #158ef3;
-  }
-}
-.tabs {
+.tab-title {
   /*使用弹性布局*/
   display: flex;
   justify-content: space-around;
@@ -103,6 +89,24 @@ export default {
   height: 50px;
   border-bottom: 1px solid #f6f6f6;
   position: relative;
+
+  .tab {
+    color: #333;
+    height: 50px;
+    line-height: 50px;
+    font-size: 16px;
+    cursor: pointer;
+    &.active-tab {
+      color: #158ef3;
+      height: 50px;
+      font-weight: bold;
+      line-height: 50px;
+      font-size: 16px;
+    }
+    &.is-active {
+      color: #158ef3;
+    }
+  }
 }
 .tab-line {
   /*使用绝对定位  -> 因为需要移动*/
@@ -111,6 +115,6 @@ export default {
   height: 2px;
   background-color: #158ef3;
   top: 100%;
-  transition: transform .3s ease;
+  transition: transform 0.3s ease;
 }
 </style>
