@@ -5,7 +5,8 @@
       <div
         :class="[activeKey == item.actKey? 'active-tab' : 'tab']"
         @click="changeTab($event,item,index)"
-        v-for="(item,index) in childList" :key="index"
+        v-for="(item,index) in childList"
+        :key="index"
       >{{item.label}}</div>
     </div>
     <slot></slot>
@@ -47,19 +48,16 @@ export default {
       self.activeKey = item.actKey
       self.$refs.line.style.transform =
         'translateX(' + self.slideWidth * index + 'px)'
-      self.$refs.line.style.transition = 'transform .3s'
       self.$emit('on-click', item, index) //将切换tab的事件暴露给父组件
     },
     //初始化时tab状态设置与相应内容显示
     updateNav: () => {
-      console.log('updateNav')
-      self.$children.map((item, index) => {
+      self.$children.forEach((item, index) => {
         if (item.actKey == self.activeKey) {
           item.show = true
           self.$nextTick(function() {
             self.$refs.line.style.transform =
               'translateX(' + self.slideWidth * index + 'px)'
-            self.$refs.line.style.transition = 'transform 0s'
           })
         } else {
           item.show = false
