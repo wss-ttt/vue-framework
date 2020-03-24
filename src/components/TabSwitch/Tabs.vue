@@ -26,7 +26,7 @@ export default {
   props: {
     defaultKey: {
       type: String,
-      default: '1'
+      default: '1' // 设置默认值
     }
   },
   created() {
@@ -34,7 +34,7 @@ export default {
   },
   mounted() {
     //循环tab标签
-    self.childList = this.$children
+    self.childList = this.$children // 动态获取子组件实例
     //设置滑动距离。平分设备宽度
     self.slideWidth = window.innerWidth / this.childList.length
     //设置状态线初始化滑动位置
