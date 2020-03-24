@@ -1,36 +1,44 @@
 <template>
   <div class="tab-switch">
     <v-tab defaultKey="1" @on-click="changeTab">
-      <v-tab-pane actKey="1" label="全部">
+      <v-tab-pane tabKey="0" label="全部">
         <div>页面1</div>
       </v-tab-pane>
-      <v-tab-pane actKey="2" label="推荐">
+      <v-tab-pane tabKey="1" label="推荐">
         <div>页面2</div>
       </v-tab-pane>
-      <v-tab-pane actKey="3" label="最新">
+      <v-tab-pane tabKey="2" label="最新">
         <div>页面3</div>
-        <v-test>好好学习 天天向上</v-test>
       </v-tab-pane>
     </v-tab>
   </div>
 </template>
 
 <script>
-import VTest from '@/components/Test.vue'
+import VTest from '@/components/Test/Test.vue'
+import VBox from '@/components/Test/Box.vue'
+import VItem from '@/components/Test/Item.vue'
 import VTab from '@/components/TabSwitch/Tabs.vue'
 import VTabPane from '@/components/TabSwitch/TabPane.vue'
 export default {
   components: {
     VTest,
+    VBox,
+    VItem,
     VTab,
     VTabPane
   },
   props: {},
   data() {
-    return {}
+    return {
+      name: 'active'
+    }
   },
   created() {},
-  mounted() {},
+  mounted() {
+    //   console.log('当前页面的子组件实例:',this.$children)
+    //   console.log('当前页面的父组件实例:',this.$parent)
+  },
   activated() {},
   deactivated() {},
   updated() {},
@@ -47,9 +55,9 @@ export default {
 }
 </script>
 <style scoped>
-/* .tab-switch {
-  width: 500px;
+.tab-switch {
+  width: 700px;
   height: 400px;
   background-color: aliceblue;
-} */
+}
 </style>
