@@ -1,6 +1,6 @@
 <template>
   <div>
-    <base-table :list="list2">
+    <base-table :list="list" :width="width">
       <thead>
         <tr>
           <th>id</th>
@@ -9,7 +9,6 @@
         </tr>
       </thead>
     </base-table>
-    <!-- <div v-for="(item,index) in person" :key="index">{{item}}-{{index}}</div> -->
   </div>
 </template>
 <script>
@@ -20,52 +19,8 @@ export default {
   },
   data() {
     return {
-      person: {
-        id: 1,
-        name: '张三',
-        age: 18
-      },
+      width: 500,
       list: [
-        [
-          {
-            row: 2,
-            val: '1'
-          },
-          {
-            val: '2'
-          },
-          {
-            val: '1'
-          },
-          {
-            val: '2'
-          }
-        ],
-        [
-          {
-            val: '2'
-          },
-          {
-            val: '1'
-          },
-          {
-            val: '2'
-          }
-        ],
-        [
-          {
-            col: 2,
-            val: '2'
-          },
-          {
-            val: '1'
-          },
-          {
-            val: '2'
-          }
-        ]
-      ],
-      list2: [
         {
           id: 1,
           name: '乔峰',
