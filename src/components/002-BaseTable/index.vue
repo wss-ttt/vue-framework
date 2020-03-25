@@ -1,10 +1,10 @@
 <template>
   <div class="table-wrap">
-    <table class="base-table">
+    <table class="base-table" :style="{width:width && width + 'px'}">
       <slot></slot>
       <tbody>
         <tr v-for="(tr,i) in list" :key="i">
-            <td v-for="(td,j) in tr" :key="j">{{td}}</td>
+          <td v-for="(td,j) in tr" :key="j">{{td}}</td>
         </tr>
       </tbody>
     </table>
@@ -18,6 +18,13 @@ export default {
     },
     data: {
       type: Array
+    },
+    width: {
+      type: Number
+    },
+    border: {
+      type: Boolean,
+      default: true
     }
   },
   methods: {}
@@ -26,32 +33,21 @@ export default {
 <style lang="scss" scoped>
 table {
   width: 100%;
+  border-collapse: collapse;
+  color: #909399;
 }
-
-table td,
-table th {
-  height: 48px;
-  font-size: 24px;
-  line-height: 36px;
-  padding: 10px;
-  color: #25262a;
+table tr {
+  border-bottom: 1px solid #ebeef5;
+}
+table tr td,
+table tr th {
+  padding: 12px 0;
   text-align: center;
-  border: 1px solid #fff;
-  vertical-align: middle;
 }
-
-table thead tr {
-  background: #d1e4ef;
-  th {
-    height: 56px;
-  }
+table tr th {
+  font-weight: 700;
 }
-
-table tbody tr {
-  background: #e4eef2;
-}
-
-table tbody tr:nth-child(2n) {
-  background: #e3eef5;
+table tr td {
+  font-weight: 400;
 }
 </style>
