@@ -76,13 +76,13 @@ export default {
         if (i % 2) {
           // trs[i].classList.add('tr-striped')
           trs[i].style.backgroundColor = '#fafafa'
-        }else{
+        } else {
           trs[i].style.backgroundColor = '#fff'
         }
       }
     },
-    trClick(e,tr,index){
-      this.$emit('on-click',tr,index)
+    trClick(e, tr, index) {
+      this.$emit('on-click', tr, index)
     }
   }
 }
