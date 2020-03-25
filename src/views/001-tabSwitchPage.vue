@@ -15,11 +15,11 @@
 </template>
 
 <script>
-import VTest from '@/components/Test/Test.vue'
-import VBox from '@/components/Test/Box.vue'
-import VItem from '@/components/Test/Item.vue'
-import VTab from '@/components/TabSwitch/Tabs.vue'
-import VTabPane from '@/components/TabSwitch/TabPane.vue'
+import VTest from '@/components/000-Test/Test.vue'
+import VBox from '@/components/000-Test/Box.vue'
+import VItem from '@/components/000-Test/Item.vue'
+import VTab from '@/components/001-TabSwitch/Tabs.vue'
+import VTabPane from '@/components/001-TabSwitch/TabPane.vue'
 export default {
   components: {
     VTest,

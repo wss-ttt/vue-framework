@@ -19,7 +19,7 @@ export default new Router({
     {
       path:'/tabSwitchPage',  // 测试tab切换组件的测试页面
       name:'tabSwitchPage',
-      component:resovle=>require(['@/views/tabSwitchPage.vue'],resovle)
+      component:resovle=>require(['@/views/001-tabSwitchPage.vue'],resovle)
     }
   ]
 })
