@@ -22,12 +22,46 @@ export default {
     width: {
       type: Number
     },
-    border: {
-      type: Boolean,
-      default: true
+    hover:{
+      type:Boolean,
+      default:false
     }
   },
-  methods: {}
+  data() {
+    return {
+      trs: []
+    }
+  },
+  mounted() {
+    var table = document.querySelector('.base-table')
+    var tbody = table.getElementsByTagName('tbody')[0]
+    var trs = tbody.getElementsByTagName('tr')
+    this.trs = trs
+    this.hover && this.trHover()
+  },
+  methods: {
+    trHover() {
+      var self = this
+      var trs = this.trs
+
+      var i = 0,len = trs.length
+      for (; i < len; i++) {
+        trs[i].onmouseover = function() {
+          self.itemChange(this)
+        }
+      }
+    },
+    itemChange(item) {
+      var self = this
+      var trs = this.trs
+
+      var i = 0,len = trs.length
+      for (; i < len; i++) {
+        trs[i].style.backgroundColor = '#fff'
+      }
+      item.style.backgroundColor = '#f5f7fa'
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>
@@ -43,6 +77,9 @@ table tr td,
 table tr th {
   padding: 12px 0;
   text-align: center;
+}
+table tbody tr {
+  transition: background-color .25s ease;
 }
 table tr th {
   font-weight: 700;
