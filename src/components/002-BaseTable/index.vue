@@ -3,7 +3,7 @@
     <table class="base-table" :style="{width:width && width + 'px'}">
       <slot></slot>
       <tbody>
-        <tr v-for="(tr,i) in list" :key="i">
+        <tr v-for="(tr,i) in list" :key="i" @click="trClick($event,tr,i)">
           <td v-for="(td,j) in tr" :key="j">{{td}}</td>
         </tr>
       </tbody>
@@ -11,6 +11,7 @@
   </div>
 </template>
 <script>
+import { getStyle } from '@/utils/index.js'
 export default {
   props: {
     list: {
@@ -22,9 +23,13 @@ export default {
     width: {
       type: Number
     },
-    hover:{
-      type:Boolean,
-      default:false
+    hover: {
+      type: Boolean,
+      default: false
+    },
+    stripe: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -38,28 +43,46 @@ export default {
     var trs = tbody.getElementsByTagName('tr')
     this.trs = trs
     this.hover && this.trHover()
+    this.stripe && this.trStripe()
   },
   methods: {
     trHover() {
       var self = this
       var trs = this.trs
 
-      var i = 0,len = trs.length
+      var i = 0,
+        len = trs.length,
+        color = ''
       for (; i < len; i++) {
+        // 鼠标移入
         trs[i].onmouseover = function() {
-          self.itemChange(this)
+          // 保存之前的颜色
+          color = this.style.backgroundColor
+          this.style.backgroundColor = '#f5f7fa'
+        }
+        // 鼠标移出
+        trs[i].onmouseout = function() {
+          this.style.backgroundColor = color
         }
       }
     },
-    itemChange(item) {
+    trStripe() {
       var self = this
       var trs = this.trs
 
-      var i = 0,len = trs.length
+      var i = 0,
+        len = trs.length
       for (; i < len; i++) {
-        trs[i].style.backgroundColor = '#fff'
+        if (i % 2) {
+          // trs[i].classList.add('tr-striped')
+          trs[i].style.backgroundColor = '#fafafa'
+        }else{
+          trs[i].style.backgroundColor = '#fff'
+        }
       }
-      item.style.backgroundColor = '#f5f7fa'
+    },
+    trClick(e,tr,index){
+      this.$emit('on-click',tr,index)
     }
   }
 }
@@ -72,6 +95,7 @@ table {
 }
 table tr {
   border-bottom: 1px solid #ebeef5;
+  cursor: pointer;
 }
 table tr td,
 table tr th {
@@ -79,7 +103,10 @@ table tr th {
   text-align: center;
 }
 table tbody tr {
-  transition: background-color .25s ease;
+  transition: background-color 0.25s ease;
+  &.tr-striped {
+    background-color: #fafafa;
+  }
 }
 table tr th {
   font-weight: 700;
