@@ -1,6 +1,6 @@
 <template>
   <div>
-    <base-table :list="list" :width="width">
+    <base-table :list="list" :width="width" hover stripe @on-click="handler">
       <thead>
         <tr>
           <th>id</th>
@@ -35,12 +35,21 @@ export default {
           id: 3,
           name: '小龙女',
           age: 20
+        },
+        {
+          id: 4,
+          name: '张三',
+          age: 21
         }
       ]
     }
   },
   computed: {},
-  methods: {},
+  methods: {
+    handler(item, index) {
+      console.log(item, index)
+    }
+  },
   mounted() {}
 }
 </script>
