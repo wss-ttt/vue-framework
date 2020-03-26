@@ -25,6 +25,11 @@ export default new Router({
       path: '/tablePage',  // 测试table组件的测试页面
       name: 'tablePage',
       component: resovle => require(['@/views/002-tablePage.vue'], resovle)
-    }
+    },
+    {
+      path:'/001-test',
+      name:'001-test',
+      component: resovle => require(['@/test/001-test.vue'], resovle)
+    },
   ]
 })
