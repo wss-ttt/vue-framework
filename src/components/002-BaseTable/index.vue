@@ -21,7 +21,8 @@ export default {
       type: Array
     },
     width: {
-      type: Number
+      // type: Number
+      type:[Number,String]  // 可能为多个类型
     },
     hover: {
       type: Boolean,
