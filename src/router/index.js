@@ -31,5 +31,10 @@ export default new Router({
       name:'001-test',
       component: resovle => require(['@/test/001-test.vue'], resovle)
     },
+    {
+      path:'/003-cardPage',
+      name:'003-cardPage',
+      component: resovle => require(['@/views/003-cardPage.vue'], resovle)
+    },
   ]
 })
