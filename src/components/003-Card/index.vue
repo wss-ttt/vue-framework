@@ -3,7 +3,7 @@
     <div class="card-header">
       <slot name="header"></slot>
     </div>
-    <div class="card-body">
+    <div class="card-body" :style="bodyStyle">
       <slot></slot>
     </div>
   </div>
@@ -15,7 +15,8 @@ export default {
   props: {
     shadow: {
       type: String
-    }
+    },
+    bodyStyle: {},
   }
 }
 </script>
