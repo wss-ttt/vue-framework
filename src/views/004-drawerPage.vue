@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
-    <button @click="display = true">打开抽屉</button>
-    <v-drawer :display.sync="display" :inner="true" :width="drawerWidth" :mask="false"></v-drawer>
+    <button @click="visible = true">打开抽屉</button>
+    <v-drawer :visible="visible"></v-drawer>
   </div>
 </template>
 
@@ -14,8 +14,7 @@ export default {
   props: {},
   data() {
     return {
-      display: false,
-      drawerWidth: '500px'
+      visible: false,
     }
   },
   created() {},
