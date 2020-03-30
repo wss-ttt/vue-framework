@@ -36,5 +36,10 @@ export default new Router({
       name:'003-cardPage',
       component: resovle => require(['@/views/003-cardPage.vue'], resovle)
     },
+    {
+      path:'/004-drawerPage',
+      name:'004-drawerPage',
+      component: resovle => require(['@/views/004-drawerPage.vue'], resovle)
+    },
   ]
 })
