@@ -8,6 +8,11 @@
 </template>
 
 <script>
+/**
+ *该组件存在的问题: 
+ * 1.没有动画效果
+ * 2.drawer的大小是固定的
+*/
 export default {
   components: {},
   props: {
