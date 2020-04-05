@@ -12,6 +12,11 @@ export default new Router({
       component: HelloWorld
     },
     {
+      path: '/test',
+      name: 'test',
+      component: resovle => require(['@/views/000-test.vue'], resovle)
+    },
+    {
       path: '/index',
       name: 'index',
       component: resovle => require(['@/views/index.vue'], resovle)
