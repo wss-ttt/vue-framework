@@ -1,7 +1,13 @@
 <template>
   <div class="wrapper">
     <button type="button" @click="visible = true">打开</button>
-    <v-drawer :visible="visible" @hide="hide"></v-drawer>
+    <button type="button" @click="direction = 'left'">left</button>
+    <button type="button" @click="direction = 'right'">right</button>
+    <button type="button" @click="direction = 'top'">top</button>
+    <button type="button" @click="direction = 'bottom'">bottom</button>
+    <v-drawer :visible="visible" @hide="hide" :direction="direction">
+      <h1>好好学习 天天向上</h1>
+    </v-drawer>
   </div>
 </template>
 
@@ -14,7 +20,8 @@ export default {
   props: {},
   data() {
     return {
-      visible: false
+      visible: false,
+      direction: 'right'
     }
   },
   created() {},
@@ -24,7 +31,7 @@ export default {
   updated() {},
   destroyed() {},
   methods: {
-    hide(){
+    hide() {
       this.visible = false
     }
   },
