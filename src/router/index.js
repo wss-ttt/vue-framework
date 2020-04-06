@@ -46,5 +46,10 @@ export default new Router({
       name:'004-drawerPage',
       component: resovle => require(['@/views/004-drawerPage.vue'], resovle)
     },
+    {
+      path:'/005-dialogPage',
+      name:'005-dialogPage',
+      component: resovle => require(['@/views/005-dialogPage.vue'], resovle)
+    },
   ]
 })
