@@ -8,6 +8,7 @@
             <div class="drawer"></div>
         </div>
     </div> -->
+    <div class="box">aaaa</div>
   </div>
 </template>
 
@@ -32,6 +33,11 @@ export default {
   watch: {}
 }
 </script>
-<style scoped>
-
+<style scoped lang="scss">
+.box{
+  width: px2rem(100px);
+  height: 100px;
+  border:1px solid #ccc;
+  color:$color;
+}
 </style>
