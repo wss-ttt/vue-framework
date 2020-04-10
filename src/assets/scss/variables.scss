@@ -1,0 +1,9 @@
+$color:red;
+$rem: 100px; // 1920px下 设置100px默认值
+
+
+// px 转换为rem函数
+@function px2rem($px) {
+    //$px为需要转换的字号
+    @return $px / $rem * 1rem;
+}
