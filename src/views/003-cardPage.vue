@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import VCard from '@/components/003-card'
+import VCard from '@/components/003-Card'
   export default {
     components:{
         VCard

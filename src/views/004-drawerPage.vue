@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import VDrawer from '@/components/004-drawer/index'
+import VDrawer from '@/components/004-Drawer/index'
 export default {
   components: {
     VDrawer
